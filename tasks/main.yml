@@ -17,3 +17,15 @@
     name: nordvpn
     state: present
     update_cache: true
+
+- name: Ensure group "nordvpn" exists
+  ansible.builtin.group:
+    name: nordvpn
+    state: present
+
+- name: Ensure nordvpn users are added to the nordvpn group.
+  user:
+    name: "{{ item }}"
+    groups: nordvpn
+    append: true
+  with_items: "{{ nordvpn_users }}"
