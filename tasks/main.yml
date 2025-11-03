@@ -2,8 +2,18 @@
 ---
 # tasks file for nordvpn
 
-# Below is an example task
-- name: Install {{ gpg_keys_package }} package
-  ansible.builtin.dnf:
-    name: "{{ gpg_keys_package }}"
+- name: Import NordVPN repo key
+  ansible.builtin.rpm_key:
     state: present
+    key: https://repo.nordvpn.com/gpg/nordvpn_public.asc
+
+- name: Install NordVPN repository
+  ansible.builtin.command:
+    cmd: "dnf config-manager addrepo --id=\"nordvpn\" --set=baseurl=\"{{ nordvpn_repo_url }}\" --set=enabled=1 --overwrite"
+    creates: /etc/yum.repos.d/nordvpn.repo
+
+- name: Install NordVPN
+  ansible.builtin.dnf:
+    name: nordvpn
+    state: present
+    update_cache: true

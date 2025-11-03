@@ -2,4 +2,4 @@
 ---
 # vars file for nordvpn
 
-gpg_keys_package: distribution-gpg-keys
+nordvpn_repo_url: https://repo.nordvpn.com/yum/nordvpn/centos/x86_64

@@ -11,7 +11,7 @@
       ansible.builtin.package_facts:
         manager: auto
 
-    - name: Fail if {{ gpg_keys_package }} package is not installed
+    - name: Fail if 'nordvpn' package is not installed
       ansible.builtin.fail:
-        msg: "{{ gpg_keys_package }} package is not installed"
-      when: gpg_keys_package not in ansible_facts.packages
+        msg: "nordvpn package is not installed"
+      when: "'nordvpn' not in ansible_facts.packages"
