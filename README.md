@@ -1,44 +1,25 @@
-Role Name
+Ansible role: NordVPN
 =========
 
-A brief description of the role goes here.
+An ansible role that installs NordVPN CLI on Linux.
 
-Requirements
-------------
+Supported distributions
+----------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role has been been developed and tested on the following distributions :
 
-Role Variables
---------------
-
-```yaml
-nordvpn_users:
-  - user1
-  - user2
-```
-
-A list of users who will be added to the nordvpn group.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+- Fedora 42
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: all
+  roles:
+    - xiple.nordvpn
+```
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
