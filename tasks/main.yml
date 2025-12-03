@@ -24,7 +24,7 @@
     state: present
 
 - name: Ensure nordvpn users are added to the nordvpn group.
-  user:
+  ansible.builtin.user:
     name: "{{ item }}"
     groups: nordvpn
     append: true
