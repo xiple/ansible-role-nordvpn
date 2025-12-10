@@ -24,6 +24,7 @@ Supported distributions
 
 This role has been been developed and tested on the following distributions :
 
+- Fedora 43
 - Fedora 42
 
 Example Playbook
