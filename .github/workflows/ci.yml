@@ -46,7 +46,6 @@ jobs:
       - name: Install test dependencies.
         run: |
           pip3 install ansible molecule
-          ansible-galaxy install -r molecule/default/requirements.yml
 
       - name: Run Molecule tests.
         run: molecule test
