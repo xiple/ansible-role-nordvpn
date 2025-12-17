@@ -1,6 +1,8 @@
 Ansible role: NordVPN
 =========
 
+[![CI](https://github.com/xiple/ansible-role-nordvpn/actions/workflows/ci.yml/badge.svg)](https://github.com/xiple/ansible-role-nordvpn/actions/workflows/ci.yml)
+
 An ansible role that installs NordVPN CLI on Linux.
 
 Requirements
