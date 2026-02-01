@@ -14,3 +14,15 @@
   ansible.builtin.include_tasks: setup-fedora.yml
   when:
     - ansible_facts.distribution == 'Fedora'
+
+- name: Ensure group "nordvpn" exists
+  ansible.builtin.group:
+    name: nordvpn
+    state: present
+
+- name: Ensure nordvpn users are added to the nordvpn group
+  ansible.builtin.user:
+    name: "{{ item }}"
+    groups: nordvpn
+    append: true
+  with_items: "{{ nordvpn_users }}"
