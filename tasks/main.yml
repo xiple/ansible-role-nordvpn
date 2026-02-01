@@ -2,30 +2,15 @@
 # SPDX-License-Identifier: MIT-0
 # tasks file for nordvpn
 
-- name: Import NordVPN repo key
-  ansible.builtin.rpm_key:
-    state: present
-    key: "{{ nordvpn_repo_key_url }}"
+- name: Load OS-specific vars
+  ansible.builtin.include_vars: "../vars/{{ ansible_facts.distribution | lower }}.yml"
 
-- name: Install NordVPN repository
-  ansible.builtin.command:
-    cmd: "dnf config-manager addrepo --id=\"nordvpn\" --set=baseurl=\"{{ nordvpn_repo_url }}\" --set=enabled=1 --overwrite"
-    creates: /etc/yum.repos.d/nordvpn.repo
+- name: Include Debian tasks
+  ansible.builtin.include_tasks: setup-debian.yml
+  when:
+    - ansible_facts.distribution == 'Debian'
 
-- name: Install NordVPN
-  ansible.builtin.dnf:
-    name: nordvpn
-    state: present
-    update_cache: true
-
-- name: Ensure group "nordvpn" exists
-  ansible.builtin.group:
-    name: nordvpn
-    state: present
-
-- name: Ensure nordvpn users are added to the nordvpn group.
-  ansible.builtin.user:
-    name: "{{ item }}"
-    groups: nordvpn
-    append: true
-  with_items: "{{ nordvpn_users }}"
+- name: Include Fedora tasks
+  ansible.builtin.include_tasks: setup-fedora.yml
+  when:
+    - ansible_facts.distribution == 'Fedora'

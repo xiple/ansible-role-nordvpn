@@ -1,0 +1,28 @@
+---
+- name: Import NordVPN repo key
+  ansible.builtin.rpm_key:
+    state: present
+    key: "{{ nordvpn_repo_key_url }}"
+
+- name: Install NordVPN repository
+  ansible.builtin.command:
+    cmd: "dnf config-manager addrepo --id=\"nordvpn\" --set=baseurl=\"{{ nordvpn_fedora_repo_url }}\" --set=enabled=1 --overwrite"
+    creates: /etc/yum.repos.d/nordvpn.repo
+
+- name: Install NordVPN
+  ansible.builtin.dnf:
+    name: nordvpn
+    state: present
+    update_cache: true
+
+- name: Ensure group "nordvpn" exists
+  ansible.builtin.group:
+    name: nordvpn
+    state: present
+
+- name: Ensure nordvpn users are added to the nordvpn group.
+  ansible.builtin.user:
+    name: "{{ item }}"
+    groups: nordvpn
+    append: true
+  with_items: "{{ nordvpn_users }}"

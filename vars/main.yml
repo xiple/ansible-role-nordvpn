@@ -1,6 +1,4 @@
 ---
 # SPDX-License-Identifier: MIT-0
-# vars file for nordvpn
 
 nordvpn_repo_key_url: https://repo.nordvpn.com/gpg/nordvpn_public.asc
-nordvpn_repo_url: https://repo.nordvpn.com/yum/nordvpn/centos/x86_64
