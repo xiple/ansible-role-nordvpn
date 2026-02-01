@@ -5,7 +5,7 @@
 - name: Import NordVPN repo key
   ansible.builtin.rpm_key:
     state: present
-    key: https://repo.nordvpn.com/gpg/nordvpn_public.asc
+    key: "{{ nordvpn_repo_key_url }}"
 
 - name: Install NordVPN repository
   ansible.builtin.command:
