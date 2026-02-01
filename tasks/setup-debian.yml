@@ -3,7 +3,7 @@
 - name: Install NordVPN repository key
   ansible.builtin.get_url:
     url: "{{ nordvpn_repo_key_url }}"
-    dest: "{{ nordvpn_debian_repo_key_path}}"
+    dest: "{{ nordvpn_debian_repo_key_path }}"
     mode: '0644'
 
 - name: Install python3-debian requirement for deb822_repository module
