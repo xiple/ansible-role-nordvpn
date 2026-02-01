@@ -1,3 +1,4 @@
 ---
 
-nordvpn_debian_repo_url: https://repo.nordvpn.com/deb/nordvpn/debian/x86_64
+nordvpn_debian_repo_url: https://repo.nordvpn.com/deb/nordvpn/debian
+nordvpn_debian_repo_key_path: /etc/apt/keyrings/nordvpn.asc
