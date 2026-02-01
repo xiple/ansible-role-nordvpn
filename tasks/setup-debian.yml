@@ -12,6 +12,7 @@
     state: present
 
 - name: Install NordVPN repository
+  # using deb822 for apt sources modern format
   ansible.builtin.deb822_repository:
     name: nordvpn
     types: deb
